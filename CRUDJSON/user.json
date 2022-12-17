@@ -1,0 +1,29 @@
+{
+  "id": 123,
+  "name": "INTEC",
+  "address": {
+    "street": "Av.Los Proceres",
+    "city": "Santo Domingo",
+    "zipcode": 10602
+  },
+  "students": [
+    {
+      "studentid": 1015,
+      "studentname": "LUIS PEREZ"
+    },
+    {
+      "studentid": 1098,
+      "studentname": "Erick Gonzalez"
+    },
+    {
+      "studentid": 1129,
+      "studentname": "Julio Guerrero"
+    },
+    {
+      "studentid": 1508,
+      "studentname": "Jose Hernandez"
+    }
+  ],
+  "phoneNumber": 9988664422,
+  "role": "Developer"
+}
