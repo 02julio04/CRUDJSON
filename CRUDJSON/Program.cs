@@ -26,13 +26,14 @@ namespace CRUDJSON
             {  
                 var json = File.ReadAllText(jsonFile);  
                 var jsonObj = JObject.Parse(json);  
-                var studentsArrary = jsonObj.GetValue("experiences") as JArray;  
+                var studentsArrary = jsonObj.GetValue("students") as JArray;  
                 var newStud = JObject.Parse(newStudent);  
                 studentsArrary.Add(newStud);  
 
                  jsonObj["students"] = studentsArrary;  
                 string newJsonResult = Newtonsoft.Json.JsonConvert.SerializeObject(jsonObj, Newtonsoft.Json.Formatting.Indented);  
                 File.WriteAllText(jsonFile, newJsonResult);
+                Console.Write("\n");
                 Console.WriteLine("Informacion guardada");
             }  
             catch (Exception ex)  
@@ -64,6 +65,7 @@ namespace CRUDJSON
                     jObject["students"] = studentsArrary;  
                     string output = Newtonsoft.Json.JsonConvert.SerializeObject(jObject, Newtonsoft.Json.Formatting.Indented);  
                     File.WriteAllText(jsonFile, output);
+                    Console.Write("\n");
                     Console.WriteLine("Datos actualizados");
                 }  
                 else  
@@ -123,12 +125,12 @@ namespace CRUDJSON
                 if (jObject != null)  
                 {  
                     Console.WriteLine("ID :" + jObject["id"].ToString());  
-                    Console.WriteLine("Name :" + jObject["name"].ToString());  
+                    Console.WriteLine("Universidad :" + jObject["Universidad"].ToString());  
   
-                    var address = jObject["address"];  
-                    Console.WriteLine("Street :" + address["street"].ToString());  
-                    Console.WriteLine("City :" + address["city"].ToString());  
-                    Console.WriteLine("Zipcode :" + address["zipcode"]);  
+                    var Dirreccion = jObject["Dirreccion"];  
+                    Console.WriteLine("Calle :" + Dirreccion["Calle"].ToString());  
+                    Console.WriteLine("Ciudad :" + Dirreccion["Ciudad"].ToString());  
+                    Console.WriteLine("codigoPostal :" + Dirreccion["codigoPostal"]);  
                     JArray studentsArrary = (JArray)jObject["students"];  
                     if (studentsArrary != null)  
                     {  
@@ -138,9 +140,7 @@ namespace CRUDJSON
                             Console.WriteLine("Name :" + item["studentname"].ToString());  
                         }  
   
-                    }  
-                    Console.WriteLine("Phone Number :" + jObject["phoneNumber"].ToString());  
-                    Console.WriteLine("Role :" + jObject["role"].ToString());  
+                    }   
   
                 }  
             }  
