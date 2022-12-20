@@ -23,8 +23,7 @@ namespace CRUDJSON
             Console.WriteLine("|-------------------Menu-----------------|");
             Console.WriteLine("|1 [Crear Registro]   | 3 [Eliminar]     |");
             Console.WriteLine("|2 [Listar Registro]  | 4 [Actualizar]   |");
-            Console.WriteLine("|5 [Buscar]                              |");
-            Console.WriteLine("|0 [Salir]                               |");
+            Console.WriteLine("|5 [Buscar]           | 0 [Salir]        |");
             Console.WriteLine("|----------------------------------------|");
             Console.WriteLine("\n");
             Console.WriteLine("Digite su opcion:");
@@ -80,11 +79,15 @@ namespace CRUDJSON
                 case "0":
                     Console.Clear();
                     Console.WriteLine("Screen Exit");
-                    Console.WriteLine("----------------------------");
+                    Console.WriteLine("-----------BYE-----------------");
+                    Console.ReadKey();
                     Environment.Exit(0);
                     break;
                 default:
                     Console.WriteLine("opcion incorrecta");
+                    Console.ReadKey();
+                    Console.Clear ();
+                    cabecera ();
 
                     break;
             }

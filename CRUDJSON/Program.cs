@@ -51,8 +51,8 @@ namespace CRUDJSON
                 var jObject = JObject.Parse(json);  
                 JArray studentsArrary = (JArray)jObject["students"];  
                 Console.Write("Digita el id para actualizar/modificar : ");  
-                var studentId = Convert.ToInt32(Console.ReadLine());  
-  
+                var studentId = Convert.ToInt32(Console.ReadLine());
+                
                 if (studentId > 0)  
                 {  
                     Console.Write("Digita su nombre : ");  
@@ -60,6 +60,7 @@ namespace CRUDJSON
   
                     foreach (var student in studentsArrary.Where(obj => obj["studentid"].Value<int>() == studentId))  
                     {  
+
                         student["studentname"] = !string.IsNullOrEmpty(studentName) ? studentName : "";  
                     }  
   
@@ -131,21 +132,23 @@ namespace CRUDJSON
             }
             else
             {
-                Console.WriteLine("----Lista----");
-                Console.WriteLine("ID :" + jObject["id"].ToString());
-                Console.WriteLine("Universidad :" + jObject["Universidad"].ToString());
+                Console.WriteLine("|----Lista---------------------|");
+                Console.WriteLine("| ID :" + jObject["id"].ToString());
+                Console.WriteLine("| Universidad :" + jObject["Universidad"].ToString());
 
                 var Dirreccion = jObject["Dirreccion"];
-                Console.WriteLine("Calle :" + Dirreccion["Calle"].ToString());
-                Console.WriteLine("Ciudad :" + Dirreccion["Ciudad"].ToString());
-                Console.WriteLine("codigoPostal :" + Dirreccion["codigoPostal"]);
+                Console.WriteLine("| Calle :" + Dirreccion["Calle"].ToString());
+                Console.WriteLine("| Ciudad :" + Dirreccion["Ciudad"].ToString());
+                Console.WriteLine("| codigoPostal :" + Dirreccion["codigoPostal"]);
+                Console.WriteLine("|------Estudiantes: -----------");
                 JArray studentsArrary = (JArray)jObject["students"];
                 if (studentsArrary != null)
                 {
                     foreach (var item in studentsArrary)
                     {
-                        Console.WriteLine("Id :" + item["studentid"]);
-                        Console.WriteLine("Name :" + item["studentname"].ToString());
+                        Console.WriteLine("| Id : {0} | nombre : {1} ", item["studentid"], item["studentname"]);
+                        //Console.WriteLine("Id :" + item["studentid"]);
+                        //Console.WriteLine("Name :" + item["studentname"].ToString());
                     }
 
                 }
@@ -201,7 +204,8 @@ namespace CRUDJSON
                         {
                             Console.WriteLine("-----Dato encontrado: ---");
                             Console.Write("\n");
-                            Console.WriteLine("id= " + s.studentid + " Name: " + s.studentname);
+                            Console.WriteLine("| Id : {0} | nombre : {1} ", s.studentid, s.studentname);
+                            //Console.WriteLine("id= " + s.studentid + " Name: " + s.studentname);
                         }
                         else
                         {
